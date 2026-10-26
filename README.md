@@ -27,8 +27,8 @@ Setiap bagian bisa disembunyikan dengan centang "Tampilkan bagian ini". Klik **S
 ## Cara memasang di hosting (cPanel / hPanel)
 
 1. **Unduh kode**: di GitHub buka repo ini → tombol hijau **Code** → **Download ZIP**.
-2. **Masuk ke File Manager** hosting, buka folder `public_html` (atau folder domain Anda).
-3. **Unggah ZIP**, lalu klik kanan → **Extract**. Pindahkan semua isi folder hasil ekstrak (`index.php`, `admin`, `assets`, dll.) langsung ke `public_html`. Pastikan file tersembunyi `.htaccess` dan `.user.ini` ikut terpindah (aktifkan "Show hidden files").
+2. **Masuk ke File Manager** hosting, buka folder document root domain (untuk akun ini: `trireka.web.id`, bukan `public_html`).
+3. **Unggah ZIP**, lalu klik kanan → **Extract**. Pindahkan semua isi folder hasil ekstrak (`index.php`, `admin`, `assets`, dll.) langsung ke folder tersebut. Pastikan file tersembunyi `.htaccess` dan `.user.ini` ikut terpindah (aktifkan "Show hidden files").
 4. Pastikan versi **PHP 8.0 atau lebih baru** (menu *Select PHP Version* / *PHP Configuration*).
 5. Pastikan folder `data` dan `uploads` bisa ditulis (izin **755**; jika gagal menyimpan, coba **775**).
 6. **Segera buka `https://domain-anda.com/admin`** dan buat akun admin (nama pengguna + kata sandi minimal 8 karakter). Halaman pembuatan akun hanya muncul sekali, yaitu saat belum ada akun, jadi lakukan langsung setelah mengunggah.
@@ -47,13 +47,13 @@ Dengan cara ini, setiap pembaruan kode di GitHub bisa dipasang ke website dengan
    - *Repository Name*: `web-trireka`
 4. Klik **Create**, tunggu proses clone selesai.
 5. Klik **Manage** pada repo tersebut → tab **Pull or Deploy**. Pastikan *Checked-Out Branch* adalah branch utama (`main`).
-6. Klik **Deploy HEAD Commit**. File `.cpanel.yml` di repo ini akan menyalin website ke `public_html`.
-7. Hapus file bawaan hosting di `public_html` jika ada (mis. `index.html` atau `default.html`).
+6. Klik **Deploy HEAD Commit**. File `.cpanel.yml` di repo ini akan menyalin website ke folder `~/trireka.web.id` (document root addon domain trireka.web.id).
+7. Hapus file bawaan hosting di folder `trireka.web.id` jika ada (mis. `index.html` atau `default.html`).
 8. Buka `https://trireka.web.id/admin` dan buat akun admin.
 
 **Memperbarui website setelah ada perubahan kode:** cPanel → Git™ Version Control → Manage → **Update from Remote**, lalu **Deploy HEAD Commit**.
 
-Jika domain dipasang sebagai *addon domain* dengan folder sendiri (bukan `public_html`), ubah baris `DEPLOYPATH` di `.cpanel.yml`.
+Di akun hosting ini, trireka.web.id adalah *addon domain* dengan document root `~/trireka.web.id`, sedangkan `public_html` milik website lain. Jika document root berubah, ubah baris `DEPLOYPATH` di `.cpanel.yml`, dan jangan pernah arahkan ke `public_html`.
 
 ## Masuk ke panel admin
 
