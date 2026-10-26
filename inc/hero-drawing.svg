@@ -1,0 +1,53 @@
+            <svg class="part" id="part" viewBox="0 0 520 380" role="img" aria-label="Gambar kerja flens: tampak depan dan potongan samping dengan ukuran">
+              <!-- TAMPAK DEPAN -->
+              <text class="vlabel" x="40" y="34">TAMPAK DEPAN</text>
+              <line class="ctr" x1="40" y1="190" x2="290" y2="190"/>
+              <line class="ctr" x1="165" y1="65" x2="165" y2="315"/>
+              <circle class="ctr" cx="165" cy="190" r="81"/>
+              <circle class="obj" cx="165" cy="190" r="108"/>
+              <circle class="obj" cx="165" cy="190" r="56"/>
+              <circle class="obj" cx="165" cy="190" r="36"/>
+              <circle class="obj" cx="222.3" cy="132.7" r="9"/>
+              <circle class="obj" cx="107.7" cy="132.7" r="9"/>
+              <circle class="obj" cx="107.7" cy="247.3" r="9"/>
+              <circle class="obj" cx="222.3" cy="247.3" r="9"/>
+              <!-- ukuran diameter luar -->
+              <line class="dimln" x1="57" y1="342" x2="273" y2="342"/>
+              <line class="dimln" x1="57" y1="200" x2="57" y2="348"/>
+              <line class="dimln" x1="273" y1="200" x2="273" y2="348"/>
+              <path class="arrow" d="M57 342 l9 -3.5 v7z"/><path class="arrow" d="M273 342 l-9 -3.5 v7z"/>
+              <text class="dimtx" x="165" y="335" text-anchor="middle">Ø120</text>
+              <!-- leader lubang -->
+              <line class="dimln" x1="229" y1="126" x2="262" y2="92"/><line class="dimln" x1="262" y1="92" x2="300" y2="92"/>
+              <text class="dimtx" x="266" y="86">4× Ø10</text>
+              <text class="dimtx" x="266" y="108">PCD 90</text>
+
+              <!-- POTONGAN SAMPING -->
+              <text class="vlabel" x="356" y="34">POTONGAN A–A</text>
+              <line class="ctr" x1="340" y1="190" x2="470" y2="190"/>
+              <!-- badan flens -->
+              <rect class="obj" x="370" y="82" width="22" height="216"/>
+              <rect class="obj" x="392" y="134" width="44" height="112"/>
+              <!-- lubang bore (hidden) -->
+              <line class="hid" x1="370" y1="154" x2="436" y2="154"/>
+              <line class="hid" x1="370" y1="226" x2="436" y2="226"/>
+              <!-- arsiran potongan -->
+              <g class="hatch">
+                <line x1="370" y1="100" x2="388" y2="82"/><line x1="370" y1="118" x2="392" y2="96"/><line x1="370" y1="136" x2="392" y2="114"/>
+                <line x1="378" y1="146" x2="392" y2="132"/><line x1="392" y1="150" x2="408" y2="134"/><line x1="404" y1="150" x2="420" y2="134"/><line x1="416" y1="150" x2="432" y2="134"/>
+                <line x1="370" y1="244" x2="384" y2="230"/><line x1="370" y1="262" x2="392" y2="240"/><line x1="370" y1="280" x2="392" y2="258"/><line x1="374" y1="294" x2="392" y2="276"/>
+                <line x1="392" y1="246" x2="408" y2="230"/><line x1="404" y1="246" x2="420" y2="230"/><line x1="416" y1="246" x2="432" y2="230"/>
+              </g>
+              <!-- ukuran tebal total -->
+              <line class="dimln" x1="370" y1="330" x2="436" y2="330"/>
+              <line class="dimln" x1="370" y1="300" x2="370" y2="336"/>
+              <line class="dimln" x1="436" y1="250" x2="436" y2="336"/>
+              <path class="arrow" d="M370 330 l9 -3.5 v7z"/><path class="arrow" d="M436 330 l-9 -3.5 v7z"/>
+              <text class="dimtx" x="403" y="323" text-anchor="middle">30</text>
+              <!-- ukuran hub -->
+              <line class="dimln" x1="470" y1="134" x2="470" y2="246"/>
+              <line class="dimln" x1="440" y1="134" x2="476" y2="134"/>
+              <line class="dimln" x1="440" y1="246" x2="476" y2="246"/>
+              <path class="arrow" d="M470 134 l-3.5 9 h7z"/><path class="arrow" d="M470 246 l-3.5 -9 h7z"/>
+              <text class="dimtx" x="480" y="194">Ø52</text>
+            </svg>

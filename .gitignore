@@ -1,0 +1,8 @@
+# Isi yang diubah lewat panel admin, akun, dan pesan masuk: hanya ada di server
+data/*
+!data/.htaccess
+!data/index.php
+uploads/*
+!uploads/.htaccess
+!uploads/.gitkeep
+.DS_Store
