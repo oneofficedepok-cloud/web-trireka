@@ -16,9 +16,9 @@ return [
         'phone' => '087769725965',
         'wa_message' => 'Halo Trireka Presisi, saya ingin minta penawaran desain 3D.',
         'wa_button' => 'Chat WhatsApp',
-        'email' => 'halo@trireka.id',
+        'email' => 'sales@trireka.web.id',
         'location' => 'Depok, Jawa Barat',
-        'notify_email' => '',
+        'notify_email' => 'sales@trireka.web.id',
     ],
     'hero' => [
         'label' => 'Jasa desain 3D untuk manufaktur',

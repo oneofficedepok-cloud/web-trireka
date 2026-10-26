@@ -144,15 +144,28 @@ $summary = "Halo {$c['site']['name']}, saya baru mengirim permintaan penawaran l
     . ($entry['tenggat'] !== '' ? "Tenggat: {$entry['tenggat']}\n" : '')
     . 'Deskripsi: ' . mb_substr($entry['deskripsi'], 0, 600);
 
-$notify = trim($c['contact']['notify_email']);
+// Kirim permintaan ke email penerima (Umum & Kontak → notifikasi RFQ, cadangan: email kontak)
+$notify = trim($c['contact']['notify_email']) ?: trim($c['contact']['email']);
 if ($notify !== '' && filter_var($notify, FILTER_VALIDATE_EMAIL) && function_exists('mail')) {
-    $host = preg_replace('/[^A-Za-z0-9.-]/', '', $_SERVER['HTTP_HOST'] ?? 'localhost');
-    $body = $summary . "\nNo. WA: {$entry['wa']}\nEmail: {$entry['email']}\nLampiran: " . count($entry['files']) . " file\n\nBuka panel admin untuk detail: /admin/";
-    $headers = "From: website@{$host}\r\nContent-Type: text/plain; charset=UTF-8";
+    $host = preg_replace(['/[^A-Za-z0-9.-]/', '/^www\./'], '', $_SERVER['HTTP_HOST'] ?? 'localhost');
+    $from = 'website@' . $host;
+    $files = $entry['files'] ? implode("\n", array_map(static fn($f) => '- ' . $f['name'], $entry['files'])) : '-';
+    $body = "Permintaan penawaran baru dari website {$c['site']['name']}\n\n"
+        . "Nama: {$entry['nama']}\n"
+        . "Perusahaan: " . ($entry['perusahaan'] ?: '-') . "\n"
+        . "No. WhatsApp: {$entry['wa']}\n"
+        . "Email: " . ($entry['email'] ?: '-') . "\n"
+        . "Tenggat: " . ($entry['tenggat'] ?: '-') . "\n"
+        . "Layanan: " . ($entry['layanan'] ? implode(', ', $entry['layanan']) : '-') . "\n\n"
+        . "Deskripsi:\n{$entry['deskripsi']}\n\n"
+        . "Lampiran (unduh di panel admin → Pesan Masuk):\n{$files}\n\n"
+        . "Balas via WhatsApp: " . wa_link($entry['wa']) . "\n"
+        . "Panel admin: " . (is_https() ? 'https://' : 'http://') . $host . '/admin/#inbox';
+    $headers = "From: {$c['site']['name']} <{$from}>\r\nContent-Type: text/plain; charset=UTF-8";
     if ($entry['email'] !== '') {
         $headers .= "\r\nReply-To: " . str_replace(["\r", "\n"], '', $entry['email']);
     }
-    @mail($notify, '=?UTF-8?B?' . base64_encode('Permintaan penawaran baru: ' . $entry['nama']) . '?=', $body, $headers);
+    @mail($notify, '=?UTF-8?B?' . base64_encode('Permintaan penawaran: ' . $entry['nama'] . ($entry['perusahaan'] !== '' ? ' (' . $entry['perusahaan'] . ')' : '')) . '?=', $body, $headers, '-f' . $from);
 }
 
 respond(true, $c['rfq']['success'], wa_link($c['contact']['phone'], $summary));
