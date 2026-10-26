@@ -34,9 +34,26 @@ Setiap bagian bisa disembunyikan dengan centang "Tampilkan bagian ini". Klik **S
 6. **Segera buka `https://domain-anda.com/admin`** dan buat akun admin (nama pengguna + kata sandi minimal 8 karakter). Halaman pembuatan akun hanya muncul sekali, yaitu saat belum ada akun, jadi lakukan langsung setelah mengunggah.
 7. Selesai. Ubah isi website dari panel admin.
 
-### Alternatif: deploy otomatis dari GitHub
+### Cara yang disarankan: hubungkan GitHub ke cPanel (DomaiNesia)
 
-Banyak hosting (cPanel *Git Version Control*, Hostinger *Git*) bisa menarik kode langsung dari repo ini. Isi yang diubah lewat admin **tidak ikut tertimpa** saat kode diperbarui, karena folder `data/` dan `uploads/` tidak disimpan di Git.
+Dengan cara ini, setiap pembaruan kode di GitHub bisa dipasang ke website dengan satu klik, tanpa unggah ZIP. Isi yang diubah lewat admin **tidak ikut tertimpa**, karena folder `data/` dan `uploads/` tidak disimpan di Git.
+
+1. Pastikan domain (mis. `trireka.web.id`) sudah aktif di paket hosting cPanel dan versi PHP 8.0+ (menu **Select PHP Version**).
+2. Di cPanel buka **Git™ Version Control** → **Create**.
+3. Isi:
+   - *Clone a Repository*: aktif
+   - *Clone URL*: `https://github.com/oneofficedepok-cloud/web-trireka.git`
+   - *Repository Path*: `repositories/web-trireka` (biarkan di luar `public_html`)
+   - *Repository Name*: `web-trireka`
+4. Klik **Create**, tunggu proses clone selesai.
+5. Klik **Manage** pada repo tersebut → tab **Pull or Deploy**. Pastikan *Checked-Out Branch* adalah branch utama (`main`).
+6. Klik **Deploy HEAD Commit**. File `.cpanel.yml` di repo ini akan menyalin website ke `public_html`.
+7. Hapus file bawaan hosting di `public_html` jika ada (mis. `index.html` atau `default.html`).
+8. Buka `https://trireka.web.id/admin` dan buat akun admin.
+
+**Memperbarui website setelah ada perubahan kode:** cPanel → Git™ Version Control → Manage → **Update from Remote**, lalu **Deploy HEAD Commit**.
+
+Jika domain dipasang sebagai *addon domain* dengan folder sendiri (bukan `public_html`), ubah baris `DEPLOYPATH` di `.cpanel.yml`.
 
 ## Masuk ke panel admin
 

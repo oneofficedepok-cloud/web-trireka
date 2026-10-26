@@ -1,0 +1,13 @@
+# Deploy otomatis cPanel (menu Git™ Version Control → Deploy HEAD Commit).
+# Menyalin kode website ke public_html. Folder data/ dan uploads/ (isi dari panel admin,
+# akun, pesan masuk, gambar) TIDAK ditimpa karena isinya tidak disimpan di Git.
+# Jika domain dipasang di folder lain (addon domain), ganti DEPLOYPATH di bawah.
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html
+    - /bin/mkdir -p $DEPLOYPATH/data $DEPLOYPATH/uploads
+    - /bin/cp -R index.php rfq.php .htaccess .user.ini admin assets inc $DEPLOYPATH/
+    - /bin/cp data/.htaccess data/index.php $DEPLOYPATH/data/
+    - /bin/cp uploads/.htaccess $DEPLOYPATH/uploads/
+    - /bin/chmod 755 $DEPLOYPATH/data $DEPLOYPATH/uploads
