@@ -33,6 +33,7 @@ $footer = str_replace('{tahun}', date('Y'), $c['footer']['text']);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<?php require __DIR__ . '/inc/analytics.php' ?>
 <title><?= e($site['name']) ?></title>
 <meta name="description" content="<?= e($site['description']) ?>">
 <meta property="og:title" content="<?= e($site['name']) ?>">
